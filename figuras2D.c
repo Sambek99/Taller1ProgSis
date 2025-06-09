@@ -19,6 +19,7 @@ Polígono regular.*/
 /*TRIANGULO*/
 
 float areaTriangulo() {
+    printf("Cálculo de área de triángulo\n");
     float base, altura; 
     printf("Ingrese la base del triángulo: ");
     scanf("%f", &base);
@@ -32,6 +33,7 @@ float areaTriangulo() {
 }
 
 float perimetroTriangulo() {
+    printf("Cálculo de perímetro de triángulo\n");
     float lado1, lado2, lado3;
     printf("Ingrese el primer lado del triángulo: ");
     scanf("%f", &lado1);
@@ -52,6 +54,7 @@ float perimetroTriangulo() {
 
 /*PARALELOGRAMO*/
 float areaParalelogramo() {
+    printf("Cálculo de área de paralelogramo\n");
     float base, altura;
     printf("Ingrese la base del paralelogramo: ");
     scanf("%f", &base);
@@ -65,6 +68,7 @@ float areaParalelogramo() {
 }
 
 float perimetroParalelogramo() {
+    printf("Cálculo de perímetro de paralelogramo\n");
     float base, lado;
     printf("Ingrese la base del paralelogramo: ");
     scanf("%f", &base);
@@ -80,6 +84,7 @@ float perimetroParalelogramo() {
 /*CUADRADO*/
 
 float areaCuadrado() {
+    printf("Cálculo de área de cuadrado\n");
     float lado;
     printf("Ingrese el lado del cuadrado: ");
     scanf("%f", &lado);
@@ -91,6 +96,7 @@ float areaCuadrado() {
 }
 
 float perimetroCuadrado() {
+    printf("Cálculo de perímetro de cuadrado\n");
     float lado;
     printf("Ingrese el lado del cuadrado: ");
     scanf("%f", &lado);
@@ -104,6 +110,7 @@ float perimetroCuadrado() {
 /*Rectangulo*/
 
 float areaRectangulo() {
+    printf("Cálculo de área de rectángulo\n");
     float base, altura;
     printf("Ingrese la base del rectángulo: ");
     scanf("%f", &base);
@@ -117,6 +124,7 @@ float areaRectangulo() {
 }
 
 float perimetroRectangulo() {
+    printf("Cálculo de perímetro de rectángulo\n");
     float base, altura;
     printf("Ingrese la base del rectángulo: ");
     scanf("%f", &base);
@@ -132,6 +140,7 @@ float perimetroRectangulo() {
 /*ROMBO*/
 
 float areaRombo() {
+    printf("Cálculo de área de rombo\n");
     float diagonalMayor, diagonalMenor;
     printf("Ingrese la diagonal mayor del rombo: ");
     scanf("%f", &diagonalMayor);
@@ -145,6 +154,7 @@ float areaRombo() {
 }
 
 float perimetroRombo() {
+    printf("Cálculo de perímetro de rombo\n");
     float lado;
     printf("Ingrese el lado del rombo: ");
     scanf("%f", &lado);
@@ -158,6 +168,7 @@ float perimetroRombo() {
 /*TRAPECIO*/
 
 float areaTrapecio() {
+    printf("Cálculo de área de trapecio\n");
     float baseMayor, baseMenor, altura;
     printf("Ingrese la base mayor del trapecio: ");
     scanf("%f", &baseMayor);
@@ -173,6 +184,7 @@ float areaTrapecio() {
 }
 
 float perimetroTrapecio() {
+    printf("Cálculo de perímetro de trapecio\n");
     float baseMayor, baseMenor, lado1, lado2;
     printf("Ingrese la base mayor del trapecio: ");
     scanf("%f", &baseMayor);
@@ -192,6 +204,7 @@ float perimetroTrapecio() {
 /*CIRCULO*/
 
 float areaCirculo() {
+    printf("Cálculo de área de círculo\n");
     float radio;
     printf("Ingrese el radio del círculo: ");
     scanf("%f", &radio);
@@ -203,6 +216,7 @@ float areaCirculo() {
 }
 
 float perimetroCirculo() {
+    printf("Cálculo de perímetro de círculo\n");
     float radio;
     printf("Ingrese el radio del círculo: ");
     scanf("%f", &radio);
@@ -216,6 +230,7 @@ float perimetroCirculo() {
 /*POLIGONO REGULAR*/
 
 float areaPoligonoRegular() {
+    printf("Cálculo de área de polígono regular\n");
     int numLados;
     float lado, apotema;
     printf("Ingrese el número de lados del polígono regular: ");
@@ -236,6 +251,7 @@ float areaPoligonoRegular() {
 }
 
 float perimetroPoligonoRegular() {
+    printf("Cálculo de perímetro de polígono regular\n");
     int numLados;
     float lado;
     printf("Ingrese el número de lados del polígono regular: ");

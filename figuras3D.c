@@ -16,6 +16,7 @@
 /*  CUBO    */
 
 float superficieCubo() {
+    printf("Calculo de superficie de cubo...\n");
     float lado;
     printf("Ingrese el lado del cubo: ");
     scanf("%f", &lado);
@@ -27,6 +28,7 @@ float superficieCubo() {
 }
 
 float volumenCubo() {
+    printf("Calculo de volumen de cubo...\n");
     float lado;
     printf("Ingrese el lado del cubo: ");
     scanf("%f", &lado);
@@ -41,6 +43,7 @@ float volumenCubo() {
 /*  CUBOIDE */
 
 float superficieCuboide() {
+    printf("Calculo de superficie de cuboide...\n");
     float largo, ancho, alto;
     printf("Ingrese el largo del cuboide: ");
     scanf("%f", &largo);
@@ -56,6 +59,7 @@ float superficieCuboide() {
 }
 
 float volumenCuboide() {
+    printf("Calculo de volumen de cuboide...\n");
     float largo, ancho, alto;
     printf("Ingrese el largo del cuboide: ");
     scanf("%f", &largo);
@@ -74,6 +78,7 @@ float volumenCuboide() {
 /*  CILINDRO RECTO  */
 
 float superficieCilindro() {
+    printf("Calculo de superficie de cilindro recto...\n");
     float radio, altura;
     printf("Ingrese el radio del cilindro: ");
     scanf("%f", &radio);
@@ -87,6 +92,7 @@ float superficieCilindro() {
 }
 
 float volumenCilindro() {
+    printf("Calculo de volumen de cilindro recto...\n");
     float radio, altura;
     printf("Ingrese el radio del cilindro: ");
     scanf("%f", &radio);
@@ -103,6 +109,7 @@ float volumenCilindro() {
 /*  ESFERA  */
 
 float superficieEsfera() {
+    printf("Calculo de superficie de esfera...\n");
     float radio;
     printf("Ingrese el radio de la esfera: ");
     scanf("%f", &radio);
@@ -114,6 +121,7 @@ float superficieEsfera() {
 }
 
 float volumenEsfera() {
+    printf("Calculo de volumen de esfera...\n");
     float radio;
     printf("Ingrese el radio de la esfera: ");
     scanf("%f", &radio);
@@ -128,6 +136,7 @@ float volumenEsfera() {
 /*  CONO    */
 
 float superficieCono() {
+    printf("Calculo de superficie de cono...\n");
     float radio, generatriz;
     printf("Ingrese el radio del cono: ");
     scanf("%f", &radio);
@@ -141,6 +150,7 @@ float superficieCono() {
 }
 
 float volumenCono() {
+    printf("Calculo de volumen de cono...\n");
     float radio, altura;
     printf("Ingrese el radio del cono: ");
     scanf("%f", &radio);
