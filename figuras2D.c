@@ -17,7 +17,8 @@ Polígono regular.*/
 
 /*TRIANGULO*/
 
-float areaTriangulo(float base, float altura) {
+float areaTriangulo() {
+    float base, altura;
     printf("Ingrese la base del triángulo: ");
     scanf("%f", &base);
     printf("Ingrese la altura del triángulo: ");
@@ -29,7 +30,8 @@ float areaTriangulo(float base, float altura) {
     return (base * altura) / 2;
 }
 
-float perimetroTriangulo(float lado1, float lado2, float lado3) {
+float perimetroTriangulo() {
+    float lado1, lado2, lado3;
     printf("Ingrese el primer lado del triángulo: ");
     scanf("%f", &lado1);
     printf("Ingrese el segundo lado del triángulo: ");
@@ -48,7 +50,8 @@ float perimetroTriangulo(float lado1, float lado2, float lado3) {
 }
 
 /*PARALELOGRAMO*/
-float areaParalelogramo(float base, float altura) {
+float areaParalelogramo() {
+    float base, altura;
     printf("Ingrese la base del paralelogramo: ");
     scanf("%f", &base);
     printf("Ingrese la altura del paralelogramo: ");
@@ -60,7 +63,8 @@ float areaParalelogramo(float base, float altura) {
     return base * altura;
 }
 
-float perimetroParalelogramo(float base, float lado) {
+float perimetroParalelogramo() {
+    float base, lado;
     printf("Ingrese la base del paralelogramo: ");
     scanf("%f", &base);
     printf("Ingrese el lado del paralelogramo: ");
@@ -74,7 +78,8 @@ float perimetroParalelogramo(float base, float lado) {
 
 /*CUADRADO*/
 
-float areaCuadrado(float lado) {
+float areaCuadrado() {
+    float lado;
     printf("Ingrese el lado del cuadrado: ");
     scanf("%f", &lado);
     if (lado <= 0) {
@@ -84,7 +89,8 @@ float areaCuadrado(float lado) {
     return lado * lado;
 }
 
-float perimetroCuadrado(float lado) {
+float perimetroCuadrado() {
+    float lado;
     printf("Ingrese el lado del cuadrado: ");
     scanf("%f", &lado);
     if (lado <= 0) {
@@ -96,7 +102,8 @@ float perimetroCuadrado(float lado) {
 
 /*Rectangulo*/
 
-float areaRectangulo(float base, float altura) {
+float areaRectangulo() {
+    float base, altura;
     printf("Ingrese la base del rectángulo: ");
     scanf("%f", &base);
     printf("Ingrese la altura del rectángulo: ");
@@ -108,7 +115,8 @@ float areaRectangulo(float base, float altura) {
     return base * altura;
 }
 
-float perimetroRectangulo(float base, float altura) {
+float perimetroRectangulo() {
+    float base, altura;
     printf("Ingrese la base del rectángulo: ");
     scanf("%f", &base);
     printf("Ingrese la altura del rectángulo: ");
@@ -122,7 +130,8 @@ float perimetroRectangulo(float base, float altura) {
 
 /*ROMBO*/
 
-float areaRombo(float diagonalMayor, float diagonalMenor) {
+float areaRombo() {
+    float diagonalMayor, diagonalMenor;
     printf("Ingrese la diagonal mayor del rombo: ");
     scanf("%f", &diagonalMayor);
     printf("Ingrese la diagonal menor del rombo: ");
@@ -134,7 +143,8 @@ float areaRombo(float diagonalMayor, float diagonalMenor) {
     return (diagonalMayor * diagonalMenor) / 2;
 }
 
-float perimetroRombo(float lado) {
+float perimetroRombo() {
+    float lado;
     printf("Ingrese el lado del rombo: ");
     scanf("%f", &lado);
     if (lado <= 0) {
@@ -146,7 +156,8 @@ float perimetroRombo(float lado) {
 
 /*TRAPECIO*/
 
-float areaTrapecio(float baseMayor, float baseMenor, float altura) {
+float areaTrapecio() {
+    float baseMayor, baseMenor, altura;
     printf("Ingrese la base mayor del trapecio: ");
     scanf("%f", &baseMayor);
     printf("Ingrese la base menor del trapecio: ");
@@ -160,7 +171,8 @@ float areaTrapecio(float baseMayor, float baseMenor, float altura) {
     return ((baseMayor + baseMenor) * altura) / 2;
 }
 
-float perimetroTrapecio(float baseMayor, float baseMenor, float lado1, float lado2) {
+float perimetroTrapecio() {
+    float baseMayor, baseMenor, lado1, lado2;
     printf("Ingrese la base mayor del trapecio: ");
     scanf("%f", &baseMayor);
     printf("Ingrese la base menor del trapecio: ");
@@ -178,7 +190,8 @@ float perimetroTrapecio(float baseMayor, float baseMenor, float lado1, float lad
 
 /*CIRCULO*/
 
-float areaCirculo(float radio) {
+float areaCirculo() {
+    float radio;
     printf("Ingrese el radio del círculo: ");
     scanf("%f", &radio);
     if (radio <= 0) {
@@ -188,7 +201,8 @@ float areaCirculo(float radio) {
     return M_PI * radio * radio;
 }
 
-float perimetroCirculo(float radio) {
+float perimetroCirculo() {
+    float radio;
     printf("Ingrese el radio del círculo: ");
     scanf("%f", &radio);
     if (radio <= 0) {
@@ -200,7 +214,9 @@ float perimetroCirculo(float radio) {
 
 /*POLIGONO REGULAR*/
 
-float areaPoligonoRegular(float lado, int numLados, float apotema) {
+float areaPoligonoRegular() {
+    int numLados;
+    float lado, apotema;
     printf("Ingrese el número de lados del polígono regular: ");
     scanf("%d", &numLados);
     printf("Ingrese la longitud de un lado: ");
@@ -218,7 +234,9 @@ float areaPoligonoRegular(float lado, int numLados, float apotema) {
     return (numLados * lado * apotema) / 2; 
 }
 
-float perimetroPoligonoRegular(float lado, int numLados) {
+float perimetroPoligonoRegular() {
+    int numLados;
+    float lado;
     printf("Ingrese el número de lados del polígono regular: ");
     scanf("%d", &numLados);
     printf("Ingrese la longitud de un lado: ");

@@ -8,34 +8,34 @@
 /*FIGURAS 2D*/
 
 /*TRIANGULO*/
-float areaTriangulo(float base, float altura);
-float perimetroTriangulo(float lado1, float lado2, float lado3);
+float areaTriangulo();
+float perimetroTriangulo();
 
 /*PARALELOGRAMO*/
-float areaParalelogramo(float base, float altura);
-float perimetroParalelogramo(float base, float lado);
+float areaParalelogramo();
+float perimetroParalelogramo();
 
 /*CUADRADO*/
-float areaCuadrado(float lado);
-float perimetroCuadrado(float lado);
+float areaCuadrado();
+float perimetroCuadrado();
 
 /*Rectangulo*/
-float areaRectangulo(float base, float altura);
-float perimetroRectangulo(float base, float altura);
+float areaRectangulo();
+float perimetroRectangulo();
 
 /*ROMBO*/
-float areaRombo(float diagonalMayor, float diagonalMenor);
-float perimetroRombo(float lado);
+float areaRombo();
+float perimetroRombo();
 
 /*TRAPECIO*/
-float areaTrapecio(float baseMayor, float baseMenor, float altura);
-float perimetroTrapecio(float baseMayor, float baseMenor, float lado1, float lado2);
+float areaTrapecio();
+float perimetroTrapecio();
 
 /*CIRCULO*/
-float areaCirculo(float radio);
-float perimetroCirculo(float radio);
+float areaCirculo();
+float perimetroCirculo();
 
 /*POLIGONO REGULAR*/
-float areaPoligonoRegular(float lado, int numLados, float apotema);
-float perimetroPoligonoRegular(float lado, int numLados)
+float areaPoligonoRegular();
+float perimetroPoligonoRegular()
 ;
