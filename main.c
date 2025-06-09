@@ -35,7 +35,7 @@ int main(){
         }
         else if (num==5){
             float rombo = areaRombo();
-            float romboP = perimetroRombo;
+            float romboP = perimetroRombo();
             printf("El area y perimetro del rombo es:",rombo,romboP);
         }
         else if (num==6){
