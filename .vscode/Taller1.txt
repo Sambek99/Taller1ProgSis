@@ -1,0 +1,12 @@
+El grupo #7 
+
+Indicar los integrantes en orden (Apellidos Nombre – Rol)
+- Burgos Zorrilla Joshua Gabriel 
+- Gaona Gallo Beker Samuel
+- Murillo Matute Steven Josue
+Motivo por el que escogieron al Líder
+- Gaona Gallo Beker Samuel, es bueno organizando al grupo.
+Cómo realizaron la división del taller
+- Burgos Zorrilla Joshua Gabriel: Se encargó del main. 
+- Gaona Gallo Beker Samuel: Se encargó de las figuras 2D, agregó sus figuras correspondientes al archivo de funciones y el makefile.
+- Murillo Matute Steven Josue: Se encargó de las figuras 3D y agregó sus figuras correspondientes al archivo de funciones.
