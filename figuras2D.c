@@ -19,7 +19,7 @@ Polígono regular.*/
 /*TRIANGULO*/
 
 float areaTriangulo() {
-    float base, altura;
+    float base, altura; 
     printf("Ingrese la base del triángulo: ");
     scanf("%f", &base);
     printf("Ingrese la altura del triángulo: ");
