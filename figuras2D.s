@@ -5,14 +5,17 @@
 	.section	.rodata
 	.align 8
 .LC0:
-	.string	"Ingrese la base del tri\303\241ngulo: "
+	.string	"C\303\241lculo de \303\241rea de tri\303\241ngulo"
+	.align 8
 .LC1:
+	.string	"Ingrese la base del tri\303\241ngulo: "
+.LC2:
 	.string	"%f"
 	.align 8
-.LC2:
+.LC3:
 	.string	"Ingrese la altura del tri\303\241ngulo: "
 	.align 8
-.LC4:
+.LC5:
 	.string	"Error: La base y la altura deben ser mayores que cero."
 	.text
 	.globl	areaTriangulo
@@ -33,60 +36,64 @@ areaTriangulo:
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 23 5
+	.loc 1 22 5
 	leaq	.LC0(%rip), %rax
 	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
+	call	puts@PLT
 	.loc 1 24 5
-	leaq	-16(%rbp), %rax
-	movq	%rax, %rsi
 	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
-	call	__isoc99_scanf@PLT
+	call	printf@PLT
 	.loc 1 25 5
+	leaq	-16(%rbp), %rax
+	movq	%rax, %rsi
 	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
-	call	printf@PLT
+	call	__isoc99_scanf@PLT
 	.loc 1 26 5
+	leaq	.LC3(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 27 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 27 14
+	.loc 1 28 14
 	movss	-16(%rbp), %xmm1
-	.loc 1 27 8
+	.loc 1 28 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L2
-	.loc 1 27 29 discriminator 1
+	.loc 1 28 29 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 27 19 discriminator 1
+	.loc 1 28 19 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L8
 .L2:
-	.loc 1 28 9
-	leaq	.LC4(%rip), %rax
+	.loc 1 29 9
+	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 29 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 30 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L6
 .L8:
-	.loc 1 31 18
+	.loc 1 32 18
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
-	.loc 1 31 28
-	movss	.LC6(%rip), %xmm1
+	.loc 1 32 28
+	movss	.LC7(%rip), %xmm1
 	divss	%xmm1, %xmm0
 .L6:
-	.loc 1 32 1
+	.loc 1 33 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L7
@@ -100,26 +107,29 @@ areaTriangulo:
 	.size	areaTriangulo, .-areaTriangulo
 	.section	.rodata
 	.align 8
-.LC7:
-	.string	"Ingrese el primer lado del tri\303\241ngulo: "
-	.align 8
 .LC8:
-	.string	"Ingrese el segundo lado del tri\303\241ngulo: "
+	.string	"C\303\241lculo de per\303\255metro de tri\303\241ngulo"
 	.align 8
 .LC9:
-	.string	"Ingrese el tercer lado del tri\303\241ngulo: "
+	.string	"Ingrese el primer lado del tri\303\241ngulo: "
 	.align 8
 .LC10:
-	.string	"Error: Todos los lados deben ser mayores que cero."
+	.string	"Ingrese el segundo lado del tri\303\241ngulo: "
 	.align 8
 .LC11:
+	.string	"Ingrese el tercer lado del tri\303\241ngulo: "
+	.align 8
+.LC12:
+	.string	"Error: Todos los lados deben ser mayores que cero."
+	.align 8
+.LC13:
 	.string	"Error: Los lados no forman un tri\303\241ngulo v\303\241lido."
 	.text
 	.globl	perimetroTriangulo
 	.type	perimetroTriangulo, @function
 perimetroTriangulo:
 .LFB1:
-	.loc 1 34 28
+	.loc 1 35 28
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -128,118 +138,122 @@ perimetroTriangulo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$32, %rsp
-	.loc 1 34 28
+	.loc 1 35 28
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
 	.loc 1 36 5
-	leaq	.LC7(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 37 5
-	leaq	-20(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 38 5
 	leaq	.LC8(%rip), %rax
 	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 39 5
-	leaq	-16(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 40 5
+	call	puts@PLT
+	.loc 1 38 5
 	leaq	.LC9(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 41 5
-	leaq	-12(%rbp), %rax
+	.loc 1 39 5
+	leaq	-20(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 42 15
+	.loc 1 40 5
+	leaq	.LC10(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 41 5
+	leaq	-16(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 42 5
+	leaq	.LC11(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 43 5
+	leaq	-12(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 44 15
 	movss	-20(%rbp), %xmm1
-	.loc 1 42 8
+	.loc 1 44 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L10
-	.loc 1 42 29 discriminator 1
+	.loc 1 44 29 discriminator 1
 	movss	-16(%rbp), %xmm1
-	.loc 1 42 20 discriminator 1
+	.loc 1 44 20 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L10
-	.loc 1 42 43 discriminator 2
+	.loc 1 44 43 discriminator 2
 	movss	-12(%rbp), %xmm1
-	.loc 1 42 34 discriminator 2
+	.loc 1 44 34 discriminator 2
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L19
 .L10:
-	.loc 1 43 9
-	leaq	.LC10(%rip), %rax
+	.loc 1 45 9
+	leaq	.LC12(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 44 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 46 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L17
 .L19:
-	.loc 1 46 16
+	.loc 1 48 16
 	movss	-20(%rbp), %xmm1
 	movss	-16(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 46 24
+	.loc 1 48 24
 	movss	-12(%rbp), %xmm0
-	.loc 1 46 8
+	.loc 1 48 8
 	comiss	%xmm1, %xmm0
 	jnb	.L14
-	.loc 1 46 44 discriminator 1
+	.loc 1 48 44 discriminator 1
 	movss	-20(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 46 52 discriminator 1
+	.loc 1 48 52 discriminator 1
 	movss	-16(%rbp), %xmm0
-	.loc 1 46 34 discriminator 1
+	.loc 1 48 34 discriminator 1
 	comiss	%xmm1, %xmm0
 	jnb	.L14
-	.loc 1 46 72 discriminator 2
+	.loc 1 48 72 discriminator 2
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 46 80 discriminator 2
+	.loc 1 48 80 discriminator 2
 	movss	-20(%rbp), %xmm0
-	.loc 1 46 62 discriminator 2
+	.loc 1 48 62 discriminator 2
 	comiss	%xmm1, %xmm0
 	jb	.L20
 .L14:
-	.loc 1 47 9
-	leaq	.LC11(%rip), %rax
+	.loc 1 49 9
+	leaq	.LC13(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 48 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 50 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L17
 .L20:
-	.loc 1 50 18
+	.loc 1 52 18
 	movss	-20(%rbp), %xmm1
 	movss	-16(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 50 26
+	.loc 1 52 26
 	movss	-12(%rbp), %xmm0
 	addss	%xmm1, %xmm0
 .L17:
-	.loc 1 51 1
+	.loc 1 53 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L18
@@ -253,17 +267,20 @@ perimetroTriangulo:
 	.size	perimetroTriangulo, .-perimetroTriangulo
 	.section	.rodata
 	.align 8
-.LC12:
+.LC14:
+	.string	"C\303\241lculo de \303\241rea de paralelogramo"
+	.align 8
+.LC15:
 	.string	"Ingrese la base del paralelogramo: "
 	.align 8
-.LC13:
+.LC16:
 	.string	"Ingrese la altura del paralelogramo: "
 	.text
 	.globl	areaParalelogramo
 	.type	areaParalelogramo, @function
 areaParalelogramo:
 .LFB2:
-	.loc 1 54 27
+	.loc 1 56 27
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -272,61 +289,65 @@ areaParalelogramo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 54 27
+	.loc 1 56 27
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 56 5
-	leaq	.LC12(%rip), %rax
+	.loc 1 57 5
+	leaq	.LC14(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 59 5
+	leaq	.LC15(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 57 5
+	.loc 1 60 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 58 5
-	leaq	.LC13(%rip), %rax
+	.loc 1 61 5
+	leaq	.LC16(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 59 5
+	.loc 1 62 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 60 14
+	.loc 1 63 14
 	movss	-16(%rbp), %xmm1
-	.loc 1 60 8
+	.loc 1 63 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L22
-	.loc 1 60 29 discriminator 1
+	.loc 1 63 29 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 60 19 discriminator 1
+	.loc 1 63 19 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L28
 .L22:
-	.loc 1 61 9
-	leaq	.LC4(%rip), %rax
+	.loc 1 64 9
+	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 62 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 65 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L26
 .L28:
-	.loc 1 64 17
+	.loc 1 67 17
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
 .L26:
-	.loc 1 65 1
+	.loc 1 68 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L27
@@ -340,17 +361,20 @@ areaParalelogramo:
 	.size	areaParalelogramo, .-areaParalelogramo
 	.section	.rodata
 	.align 8
-.LC14:
+.LC17:
+	.string	"C\303\241lculo de per\303\255metro de paralelogramo"
+	.align 8
+.LC18:
 	.string	"Ingrese el lado del paralelogramo: "
 	.align 8
-.LC15:
+.LC19:
 	.string	"Error: La base y el lado deben ser mayores que cero."
 	.text
 	.globl	perimetroParalelogramo
 	.type	perimetroParalelogramo, @function
 perimetroParalelogramo:
 .LFB3:
-	.loc 1 67 32
+	.loc 1 70 32
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -359,63 +383,67 @@ perimetroParalelogramo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 67 32
+	.loc 1 70 32
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 69 5
-	leaq	.LC12(%rip), %rax
+	.loc 1 71 5
+	leaq	.LC17(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 73 5
+	leaq	.LC15(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 70 5
+	.loc 1 74 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 71 5
-	leaq	.LC14(%rip), %rax
+	.loc 1 75 5
+	leaq	.LC18(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 72 5
+	.loc 1 76 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 73 14
+	.loc 1 77 14
 	movss	-16(%rbp), %xmm1
-	.loc 1 73 8
+	.loc 1 77 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L30
-	.loc 1 73 27 discriminator 1
+	.loc 1 77 27 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 73 19 discriminator 1
+	.loc 1 77 19 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L36
 .L30:
-	.loc 1 74 9
-	leaq	.LC15(%rip), %rax
+	.loc 1 78 9
+	leaq	.LC19(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 75 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 79 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L34
 .L36:
-	.loc 1 77 22
+	.loc 1 81 22
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	addss	%xmm1, %xmm0
-	.loc 1 77 14
+	.loc 1 81 14
 	addss	%xmm0, %xmm0
 .L34:
-	.loc 1 78 1
+	.loc 1 82 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L35
@@ -428,18 +456,20 @@ perimetroParalelogramo:
 .LFE3:
 	.size	perimetroParalelogramo, .-perimetroParalelogramo
 	.section	.rodata
+.LC20:
+	.string	"C\303\241lculo de \303\241rea de cuadrado"
 	.align 8
-.LC16:
+.LC21:
 	.string	"Ingrese el lado del cuadrado: "
 	.align 8
-.LC17:
+.LC22:
 	.string	"Error: El lado debe ser mayor que cero."
 	.text
 	.globl	areaCuadrado
 	.type	areaCuadrado, @function
 areaCuadrado:
 .LFB4:
-	.loc 1 82 22
+	.loc 1 86 22
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -448,42 +478,46 @@ areaCuadrado:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 82 22
+	.loc 1 86 22
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 84 5
-	leaq	.LC16(%rip), %rax
+	.loc 1 87 5
+	leaq	.LC20(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 89 5
+	leaq	.LC21(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 85 5
+	.loc 1 90 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 86 14
+	.loc 1 91 14
 	movss	-12(%rbp), %xmm1
-	.loc 1 86 8
+	.loc 1 91 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L44
-	.loc 1 87 9
-	leaq	.LC17(%rip), %rax
+	.loc 1 92 9
+	leaq	.LC22(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 88 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 93 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L41
 .L44:
-	.loc 1 90 17
+	.loc 1 95 17
 	movss	-12(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
 .L41:
-	.loc 1 91 1
+	.loc 1 96 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L42
@@ -495,11 +529,16 @@ areaCuadrado:
 	.cfi_endproc
 .LFE4:
 	.size	areaCuadrado, .-areaCuadrado
+	.section	.rodata
+	.align 8
+.LC23:
+	.string	"C\303\241lculo de per\303\255metro de cuadrado"
+	.text
 	.globl	perimetroCuadrado
 	.type	perimetroCuadrado, @function
 perimetroCuadrado:
 .LFB5:
-	.loc 1 93 27
+	.loc 1 98 27
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -508,42 +547,46 @@ perimetroCuadrado:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 93 27
+	.loc 1 98 27
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 95 5
-	leaq	.LC16(%rip), %rax
+	.loc 1 99 5
+	leaq	.LC23(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 101 5
+	leaq	.LC21(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 96 5
+	.loc 1 102 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 97 14
+	.loc 1 103 14
 	movss	-12(%rbp), %xmm1
-	.loc 1 97 8
+	.loc 1 103 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L52
-	.loc 1 98 9
-	leaq	.LC17(%rip), %rax
+	.loc 1 104 9
+	leaq	.LC22(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 99 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 105 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L49
 .L52:
-	.loc 1 101 14
+	.loc 1 107 14
 	movss	-12(%rbp), %xmm1
-	movss	.LC18(%rip), %xmm0
+	movss	.LC24(%rip), %xmm0
 	mulss	%xmm1, %xmm0
 .L49:
-	.loc 1 102 1
+	.loc 1 108 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L50
@@ -557,17 +600,20 @@ perimetroCuadrado:
 	.size	perimetroCuadrado, .-perimetroCuadrado
 	.section	.rodata
 	.align 8
-.LC19:
+.LC25:
+	.string	"C\303\241lculo de \303\241rea de rect\303\241ngulo"
+	.align 8
+.LC26:
 	.string	"Ingrese la base del rect\303\241ngulo: "
 	.align 8
-.LC20:
+.LC27:
 	.string	"Ingrese la altura del rect\303\241ngulo: "
 	.text
 	.globl	areaRectangulo
 	.type	areaRectangulo, @function
 areaRectangulo:
 .LFB6:
-	.loc 1 106 24
+	.loc 1 112 24
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -576,61 +622,65 @@ areaRectangulo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 106 24
+	.loc 1 112 24
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 108 5
-	leaq	.LC19(%rip), %rax
+	.loc 1 113 5
+	leaq	.LC25(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 115 5
+	leaq	.LC26(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 109 5
+	.loc 1 116 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 110 5
-	leaq	.LC20(%rip), %rax
+	.loc 1 117 5
+	leaq	.LC27(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 111 5
+	.loc 1 118 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 112 14
+	.loc 1 119 14
 	movss	-16(%rbp), %xmm1
-	.loc 1 112 8
+	.loc 1 119 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L54
-	.loc 1 112 29 discriminator 1
+	.loc 1 119 29 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 112 19 discriminator 1
+	.loc 1 119 19 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L60
 .L54:
-	.loc 1 113 9
-	leaq	.LC4(%rip), %rax
+	.loc 1 120 9
+	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 114 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 121 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L58
 .L60:
-	.loc 1 116 17
+	.loc 1 123 17
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
 .L58:
-	.loc 1 117 1
+	.loc 1 124 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L59
@@ -642,11 +692,16 @@ areaRectangulo:
 	.cfi_endproc
 .LFE6:
 	.size	areaRectangulo, .-areaRectangulo
+	.section	.rodata
+	.align 8
+.LC28:
+	.string	"C\303\241lculo de per\303\255metro de rect\303\241ngulo"
+	.text
 	.globl	perimetroRectangulo
 	.type	perimetroRectangulo, @function
 perimetroRectangulo:
 .LFB7:
-	.loc 1 119 29
+	.loc 1 126 29
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -655,63 +710,67 @@ perimetroRectangulo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 119 29
+	.loc 1 126 29
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 121 5
-	leaq	.LC19(%rip), %rax
+	.loc 1 127 5
+	leaq	.LC28(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 129 5
+	leaq	.LC26(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 122 5
+	.loc 1 130 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 123 5
-	leaq	.LC20(%rip), %rax
+	.loc 1 131 5
+	leaq	.LC27(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 124 5
+	.loc 1 132 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 125 14
+	.loc 1 133 14
 	movss	-16(%rbp), %xmm1
-	.loc 1 125 8
+	.loc 1 133 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L62
-	.loc 1 125 29 discriminator 1
+	.loc 1 133 29 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 125 19 discriminator 1
+	.loc 1 133 19 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L68
 .L62:
-	.loc 1 126 9
-	leaq	.LC4(%rip), %rax
+	.loc 1 134 9
+	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 127 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 135 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L66
 .L68:
-	.loc 1 129 22
+	.loc 1 137 22
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	addss	%xmm1, %xmm0
-	.loc 1 129 14
+	.loc 1 137 14
 	addss	%xmm0, %xmm0
 .L66:
-	.loc 1 130 1
+	.loc 1 138 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L67
@@ -724,21 +783,23 @@ perimetroRectangulo:
 .LFE7:
 	.size	perimetroRectangulo, .-perimetroRectangulo
 	.section	.rodata
+.LC29:
+	.string	"C\303\241lculo de \303\241rea de rombo"
 	.align 8
-.LC21:
+.LC30:
 	.string	"Ingrese la diagonal mayor del rombo: "
 	.align 8
-.LC22:
+.LC31:
 	.string	"Ingrese la diagonal menor del rombo: "
 	.align 8
-.LC23:
+.LC32:
 	.string	"Error: Las diagonales deben ser mayores que cero."
 	.text
 	.globl	areaRombo
 	.type	areaRombo, @function
 areaRombo:
 .LFB8:
-	.loc 1 134 19
+	.loc 1 142 19
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -747,64 +808,68 @@ areaRombo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 134 19
+	.loc 1 142 19
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 136 5
-	leaq	.LC21(%rip), %rax
+	.loc 1 143 5
+	leaq	.LC29(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 145 5
+	leaq	.LC30(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 137 5
+	.loc 1 146 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 138 5
-	leaq	.LC22(%rip), %rax
+	.loc 1 147 5
+	leaq	.LC31(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 139 5
+	.loc 1 148 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 140 23
+	.loc 1 149 23
 	movss	-16(%rbp), %xmm1
-	.loc 1 140 8
+	.loc 1 149 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L70
-	.loc 1 140 45 discriminator 1
+	.loc 1 149 45 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 140 28 discriminator 1
+	.loc 1 149 28 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L76
 .L70:
-	.loc 1 141 9
-	leaq	.LC23(%rip), %rax
+	.loc 1 150 9
+	leaq	.LC32(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 142 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 151 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L74
 .L76:
-	.loc 1 144 27
+	.loc 1 153 27
 	movss	-16(%rbp), %xmm1
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
-	.loc 1 144 44
-	movss	.LC6(%rip), %xmm1
+	.loc 1 153 44
+	movss	.LC7(%rip), %xmm1
 	divss	%xmm1, %xmm0
 .L74:
-	.loc 1 145 1
+	.loc 1 154 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L75
@@ -817,14 +882,17 @@ areaRombo:
 .LFE8:
 	.size	areaRombo, .-areaRombo
 	.section	.rodata
-.LC24:
+	.align 8
+.LC33:
+	.string	"C\303\241lculo de per\303\255metro de rombo"
+.LC34:
 	.string	"Ingrese el lado del rombo: "
 	.text
 	.globl	perimetroRombo
 	.type	perimetroRombo, @function
 perimetroRombo:
 .LFB9:
-	.loc 1 147 24
+	.loc 1 156 24
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -833,42 +901,46 @@ perimetroRombo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 147 24
+	.loc 1 156 24
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 149 5
-	leaq	.LC24(%rip), %rax
+	.loc 1 157 5
+	leaq	.LC33(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 159 5
+	leaq	.LC34(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 150 5
+	.loc 1 160 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 151 14
+	.loc 1 161 14
 	movss	-12(%rbp), %xmm1
-	.loc 1 151 8
+	.loc 1 161 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L84
-	.loc 1 152 9
-	leaq	.LC17(%rip), %rax
+	.loc 1 162 9
+	leaq	.LC22(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 153 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 163 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L81
 .L84:
-	.loc 1 155 14
+	.loc 1 165 14
 	movss	-12(%rbp), %xmm1
-	movss	.LC18(%rip), %xmm0
+	movss	.LC24(%rip), %xmm0
 	mulss	%xmm1, %xmm0
 .L81:
-	.loc 1 156 1
+	.loc 1 166 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L82
@@ -881,24 +953,26 @@ perimetroRombo:
 .LFE9:
 	.size	perimetroRombo, .-perimetroRombo
 	.section	.rodata
+.LC35:
+	.string	"C\303\241lculo de \303\241rea de trapecio"
 	.align 8
-.LC25:
+.LC36:
 	.string	"Ingrese la base mayor del trapecio: "
 	.align 8
-.LC26:
+.LC37:
 	.string	"Ingrese la base menor del trapecio: "
 	.align 8
-.LC27:
+.LC38:
 	.string	"Ingrese la altura del trapecio: "
 	.align 8
-.LC28:
+.LC39:
 	.string	"Error: Las bases y la altura deben ser mayores que cero."
 	.text
 	.globl	areaTrapecio
 	.type	areaTrapecio, @function
 areaTrapecio:
 .LFB10:
-	.loc 1 160 22
+	.loc 1 170 22
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -907,85 +981,89 @@ areaTrapecio:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$32, %rsp
-	.loc 1 160 22
+	.loc 1 170 22
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 162 5
-	leaq	.LC25(%rip), %rax
+	.loc 1 171 5
+	leaq	.LC35(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 173 5
+	leaq	.LC36(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 163 5
+	.loc 1 174 5
 	leaq	-20(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 164 5
-	leaq	.LC26(%rip), %rax
+	.loc 1 175 5
+	leaq	.LC37(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 165 5
+	.loc 1 176 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 166 5
-	leaq	.LC27(%rip), %rax
+	.loc 1 177 5
+	leaq	.LC38(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 167 5
+	.loc 1 178 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 168 19
+	.loc 1 179 19
 	movss	-20(%rbp), %xmm1
-	.loc 1 168 8
+	.loc 1 179 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L86
-	.loc 1 168 37 discriminator 1
+	.loc 1 179 37 discriminator 1
 	movss	-16(%rbp), %xmm1
-	.loc 1 168 24 discriminator 1
+	.loc 1 179 24 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L86
-	.loc 1 168 52 discriminator 2
+	.loc 1 179 52 discriminator 2
 	movss	-12(%rbp), %xmm1
-	.loc 1 168 42 discriminator 2
+	.loc 1 179 42 discriminator 2
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L92
 .L86:
-	.loc 1 169 9
-	leaq	.LC28(%rip), %rax
+	.loc 1 180 9
+	leaq	.LC39(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 170 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 181 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L90
 .L92:
-	.loc 1 172 24
+	.loc 1 183 24
 	movss	-20(%rbp), %xmm1
 	movss	-16(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 172 37
+	.loc 1 183 37
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
-	.loc 1 172 47
-	movss	.LC6(%rip), %xmm1
+	.loc 1 183 47
+	movss	.LC7(%rip), %xmm1
 	divss	%xmm1, %xmm0
 .L90:
-	.loc 1 173 1
+	.loc 1 184 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L91
@@ -999,20 +1077,23 @@ areaTrapecio:
 	.size	areaTrapecio, .-areaTrapecio
 	.section	.rodata
 	.align 8
-.LC29:
+.LC40:
+	.string	"C\303\241lculo de per\303\255metro de trapecio"
+	.align 8
+.LC41:
 	.string	"Ingrese el primer lado del trapecio: "
 	.align 8
-.LC30:
+.LC42:
 	.string	"Ingrese el segundo lado del trapecio: "
 	.align 8
-.LC31:
+.LC43:
 	.string	"Error: Todas las longitudes deben ser mayores que cero."
 	.text
 	.globl	perimetroTrapecio
 	.type	perimetroTrapecio, @function
 perimetroTrapecio:
 .LFB11:
-	.loc 1 175 27
+	.loc 1 186 27
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -1021,103 +1102,107 @@ perimetroTrapecio:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$32, %rsp
-	.loc 1 175 27
+	.loc 1 186 27
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 177 5
-	leaq	.LC25(%rip), %rax
+	.loc 1 187 5
+	leaq	.LC40(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 189 5
+	leaq	.LC36(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 178 5
+	.loc 1 190 5
 	leaq	-24(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 179 5
-	leaq	.LC26(%rip), %rax
+	.loc 1 191 5
+	leaq	.LC37(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 180 5
+	.loc 1 192 5
 	leaq	-20(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 181 5
-	leaq	.LC29(%rip), %rax
+	.loc 1 193 5
+	leaq	.LC41(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 182 5
+	.loc 1 194 5
 	leaq	-16(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 183 5
-	leaq	.LC30(%rip), %rax
+	.loc 1 195 5
+	leaq	.LC42(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 184 5
+	.loc 1 196 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 185 19
+	.loc 1 197 19
 	movss	-24(%rbp), %xmm1
-	.loc 1 185 8
+	.loc 1 197 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L94
-	.loc 1 185 37 discriminator 1
+	.loc 1 197 37 discriminator 1
 	movss	-20(%rbp), %xmm1
-	.loc 1 185 24 discriminator 1
+	.loc 1 197 24 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L94
-	.loc 1 185 51 discriminator 2
+	.loc 1 197 51 discriminator 2
 	movss	-16(%rbp), %xmm1
-	.loc 1 185 42 discriminator 2
+	.loc 1 197 42 discriminator 2
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L94
-	.loc 1 185 65 discriminator 3
+	.loc 1 197 65 discriminator 3
 	movss	-12(%rbp), %xmm1
-	.loc 1 185 56 discriminator 3
+	.loc 1 197 56 discriminator 3
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L100
 .L94:
-	.loc 1 186 9
-	leaq	.LC31(%rip), %rax
+	.loc 1 198 9
+	leaq	.LC43(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 187 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 199 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L98
 .L100:
-	.loc 1 189 22
+	.loc 1 201 22
 	movss	-24(%rbp), %xmm1
 	movss	-20(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 189 34
+	.loc 1 201 34
 	movss	-16(%rbp), %xmm0
 	addss	%xmm0, %xmm1
-	.loc 1 189 42
+	.loc 1 201 42
 	movss	-12(%rbp), %xmm0
 	addss	%xmm1, %xmm0
 .L98:
-	.loc 1 190 1
+	.loc 1 202 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L99
@@ -1130,18 +1215,20 @@ perimetroTrapecio:
 .LFE11:
 	.size	perimetroTrapecio, .-perimetroTrapecio
 	.section	.rodata
+.LC44:
+	.string	"C\303\241lculo de \303\241rea de c\303\255rculo"
 	.align 8
-.LC32:
+.LC45:
 	.string	"Ingrese el radio del c\303\255rculo: "
 	.align 8
-.LC33:
+.LC46:
 	.string	"Error: El radio debe ser mayor que cero."
 	.text
 	.globl	areaCirculo
 	.type	areaCirculo, @function
 areaCirculo:
 .LFB12:
-	.loc 1 194 21
+	.loc 1 206 21
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -1150,49 +1237,53 @@ areaCirculo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 194 21
+	.loc 1 206 21
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 196 5
-	leaq	.LC32(%rip), %rax
+	.loc 1 207 5
+	leaq	.LC44(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 209 5
+	leaq	.LC45(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 197 5
+	.loc 1 210 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 198 15
+	.loc 1 211 15
 	movss	-12(%rbp), %xmm1
-	.loc 1 198 8
+	.loc 1 211 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L108
-	.loc 1 199 9
-	leaq	.LC33(%rip), %rax
+	.loc 1 212 9
+	leaq	.LC46(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 200 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 213 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L105
 .L108:
-	.loc 1 202 17
+	.loc 1 215 17
 	movss	-12(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	cvtss2sd	%xmm0, %xmm1
-	movsd	.LC34(%rip), %xmm0
+	movsd	.LC47(%rip), %xmm0
 	mulsd	%xmm0, %xmm1
-	.loc 1 202 25
+	.loc 1 215 25
 	movss	-12(%rbp), %xmm0
 	cvtss2sd	%xmm0, %xmm0
 	mulsd	%xmm1, %xmm0
 	cvtsd2ss	%xmm0, %xmm0
 .L105:
-	.loc 1 203 1
+	.loc 1 216 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L106
@@ -1204,11 +1295,16 @@ areaCirculo:
 	.cfi_endproc
 .LFE12:
 	.size	areaCirculo, .-areaCirculo
+	.section	.rodata
+	.align 8
+.LC48:
+	.string	"C\303\241lculo de per\303\255metro de c\303\255rculo"
+	.text
 	.globl	perimetroCirculo
 	.type	perimetroCirculo, @function
 perimetroCirculo:
 .LFB13:
-	.loc 1 205 26
+	.loc 1 218 26
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -1217,45 +1313,49 @@ perimetroCirculo:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 205 26
+	.loc 1 218 26
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 207 5
-	leaq	.LC32(%rip), %rax
+	.loc 1 219 5
+	leaq	.LC48(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 221 5
+	leaq	.LC45(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	.loc 1 208 5
+	.loc 1 222 5
 	leaq	-12(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
+	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
-	.loc 1 209 15
+	.loc 1 223 15
 	movss	-12(%rbp), %xmm1
-	.loc 1 209 8
+	.loc 1 223 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L116
-	.loc 1 210 9
-	leaq	.LC33(%rip), %rax
+	.loc 1 224 9
+	leaq	.LC46(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 211 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 225 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L113
 .L116:
-	.loc 1 213 21
+	.loc 1 227 21
 	movss	-12(%rbp), %xmm0
 	pxor	%xmm1, %xmm1
 	cvtss2sd	%xmm0, %xmm1
-	movsd	.LC35(%rip), %xmm0
+	movsd	.LC49(%rip), %xmm0
 	mulsd	%xmm1, %xmm0
 	cvtsd2ss	%xmm0, %xmm0
 .L113:
-	.loc 1 214 1
+	.loc 1 228 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L114
@@ -1269,27 +1369,30 @@ perimetroCirculo:
 	.size	perimetroCirculo, .-perimetroCirculo
 	.section	.rodata
 	.align 8
-.LC36:
+.LC50:
+	.string	"C\303\241lculo de \303\241rea de pol\303\255gono regular"
+	.align 8
+.LC51:
 	.string	"Ingrese el n\303\272mero de lados del pol\303\255gono regular: "
-.LC37:
+.LC52:
 	.string	"%d"
 	.align 8
-.LC38:
+.LC53:
 	.string	"Ingrese la longitud de un lado: "
-.LC39:
+.LC54:
 	.string	"Ingrese la apotema: "
 	.align 8
-.LC40:
+.LC55:
 	.string	"Error: El n\303\272mero de lados debe ser al menos 3."
 	.align 8
-.LC41:
+.LC56:
 	.string	"Error: El lado y la apotema deben ser mayores que cero."
 	.text
 	.globl	areaPoligonoRegular
 	.type	areaPoligonoRegular, @function
 areaPoligonoRegular:
 .LFB14:
-	.loc 1 218 29
+	.loc 1 232 29
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -1298,94 +1401,98 @@ areaPoligonoRegular:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$32, %rsp
-	.loc 1 218 29
+	.loc 1 232 29
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 221 5
-	leaq	.LC36(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 222 5
-	leaq	-20(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC37(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 223 5
-	leaq	.LC38(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 224 5
-	leaq	-16(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 225 5
-	leaq	.LC39(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 226 5
-	leaq	-12(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 227 18
-	movl	-20(%rbp), %eax
-	.loc 1 227 8
-	cmpl	$2, %eax
-	jg	.L118
-	.loc 1 228 9
-	leaq	.LC40(%rip), %rax
+	.loc 1 233 5
+	leaq	.LC50(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 229 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 236 5
+	leaq	.LC51(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 237 5
+	leaq	-20(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC52(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 238 5
+	leaq	.LC53(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 239 5
+	leaq	-16(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 240 5
+	leaq	.LC54(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 241 5
+	leaq	-12(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 242 18
+	movl	-20(%rbp), %eax
+	.loc 1 242 8
+	cmpl	$2, %eax
+	jg	.L118
+	.loc 1 243 9
+	leaq	.LC55(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 244 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L123
 .L118:
-	.loc 1 231 14
+	.loc 1 246 14
 	movss	-16(%rbp), %xmm1
-	.loc 1 231 8
+	.loc 1 246 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jnb	.L120
-	.loc 1 231 30 discriminator 1
+	.loc 1 246 30 discriminator 1
 	movss	-12(%rbp), %xmm1
-	.loc 1 231 19 discriminator 1
+	.loc 1 246 19 discriminator 1
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L125
 .L120:
-	.loc 1 232 9
-	leaq	.LC41(%rip), %rax
+	.loc 1 247 9
+	leaq	.LC56(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 233 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 248 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L123
 .L125:
-	.loc 1 235 22
+	.loc 1 250 22
 	movl	-20(%rbp), %eax
 	pxor	%xmm1, %xmm1
 	cvtsi2ssl	%eax, %xmm1
 	movss	-16(%rbp), %xmm0
 	mulss	%xmm0, %xmm1
-	.loc 1 235 29
+	.loc 1 250 29
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
-	.loc 1 235 40
-	movss	.LC6(%rip), %xmm1
+	.loc 1 250 40
+	movss	.LC7(%rip), %xmm1
 	divss	%xmm1, %xmm0
 .L123:
-	.loc 1 236 1
+	.loc 1 251 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L124
@@ -1397,11 +1504,16 @@ areaPoligonoRegular:
 	.cfi_endproc
 .LFE14:
 	.size	areaPoligonoRegular, .-areaPoligonoRegular
+	.section	.rodata
+	.align 8
+.LC57:
+	.string	"C\303\241lculo de per\303\255metro de pol\303\255gono regular"
+	.text
 	.globl	perimetroPoligonoRegular
 	.type	perimetroPoligonoRegular, @function
 perimetroPoligonoRegular:
 .LFB15:
-	.loc 1 238 34
+	.loc 1 253 34
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -1410,69 +1522,73 @@ perimetroPoligonoRegular:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	.loc 1 238 34
+	.loc 1 253 34
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	.loc 1 241 5
-	leaq	.LC36(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 242 5
-	leaq	-16(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC37(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 243 5
-	leaq	.LC38(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	.loc 1 244 5
-	leaq	-12(%rbp), %rax
-	movq	%rax, %rsi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	__isoc99_scanf@PLT
-	.loc 1 245 18
-	movl	-16(%rbp), %eax
-	.loc 1 245 8
-	cmpl	$2, %eax
-	jg	.L127
-	.loc 1 246 9
-	leaq	.LC40(%rip), %rax
+	.loc 1 254 5
+	leaq	.LC57(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 247 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 257 5
+	leaq	.LC51(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 258 5
+	leaq	-16(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC52(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 259 5
+	leaq	.LC53(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	.loc 1 260 5
+	leaq	-12(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	.loc 1 261 18
+	movl	-16(%rbp), %eax
+	.loc 1 261 8
+	cmpl	$2, %eax
+	jg	.L127
+	.loc 1 262 9
+	leaq	.LC55(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	.loc 1 263 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L131
 .L127:
-	.loc 1 249 14
+	.loc 1 265 14
 	movss	-12(%rbp), %xmm1
-	.loc 1 249 8
+	.loc 1 265 8
 	pxor	%xmm0, %xmm0
 	comiss	%xmm1, %xmm0
 	jb	.L134
-	.loc 1 250 9
-	leaq	.LC17(%rip), %rax
+	.loc 1 266 9
+	leaq	.LC22(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	.loc 1 251 16
-	movss	.LC5(%rip), %xmm0
+	.loc 1 267 16
+	movss	.LC6(%rip), %xmm0
 	jmp	.L131
 .L134:
-	.loc 1 253 21
+	.loc 1 269 21
 	movl	-16(%rbp), %eax
 	pxor	%xmm1, %xmm1
 	cvtsi2ssl	%eax, %xmm1
 	movss	-12(%rbp), %xmm0
 	mulss	%xmm1, %xmm0
 .L131:
-	.loc 1 254 1
+	.loc 1 270 1
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
 	je	.L132
@@ -1486,20 +1602,20 @@ perimetroPoligonoRegular:
 	.size	perimetroPoligonoRegular, .-perimetroPoligonoRegular
 	.section	.rodata
 	.align 4
-.LC5:
+.LC6:
 	.long	-1082130432
 	.align 4
-.LC6:
+.LC7:
 	.long	1073741824
 	.align 4
-.LC18:
+.LC24:
 	.long	1082130432
 	.align 8
-.LC34:
+.LC47:
 	.long	1413754136
 	.long	1074340347
 	.align 8
-.LC35:
+.LC49:
 	.long	1413754136
 	.long	1075388923
 	.text
@@ -1507,7 +1623,7 @@ perimetroPoligonoRegular:
 	.file 2 "/usr/include/stdio.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x485
+	.long	0x487
 	.value	0x5
 	.byte	0x1
 	.byte	0x8
@@ -1594,24 +1710,25 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF14
-	.byte	0xee
+	.byte	0xfd
 	.long	0x78
 	.quad	.LFB15
 	.quad	.LFE15-.LFB15
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xf7
+	.long	0xf9
 	.uleb128 0x1
 	.long	.LASF12
-	.byte	0xef
+	.byte	0xff
 	.byte	0x9
 	.long	0x58
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
-	.uleb128 0x1
+	.uleb128 0xc
 	.long	.LASF13
-	.byte	0xf0
+	.byte	0x1
+	.value	0x100
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1620,16 +1737,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF15
-	.byte	0xda
+	.byte	0xe8
 	.long	0x78
 	.quad	.LFB14
 	.quad	.LFE14-.LFB14
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x142
+	.long	0x144
 	.uleb128 0x1
 	.long	.LASF12
-	.byte	0xdb
+	.byte	0xea
 	.byte	0x9
 	.long	0x58
 	.uleb128 0x2
@@ -1637,7 +1754,7 @@ perimetroPoligonoRegular:
 	.sleb128 -36
 	.uleb128 0x1
 	.long	.LASF13
-	.byte	0xdc
+	.byte	0xeb
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1645,7 +1762,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF16
-	.byte	0xdc
+	.byte	0xeb
 	.byte	0x11
 	.long	0x78
 	.uleb128 0x2
@@ -1654,16 +1771,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF17
-	.byte	0xcd
+	.byte	0xda
 	.long	0x78
 	.quad	.LFB13
 	.quad	.LFE13-.LFB13
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x171
+	.long	0x173
 	.uleb128 0x1
 	.long	.LASF18
-	.byte	0xce
+	.byte	0xdc
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1672,16 +1789,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF19
-	.byte	0xc2
+	.byte	0xce
 	.long	0x78
 	.quad	.LFB12
 	.quad	.LFE12-.LFB12
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1a0
+	.long	0x1a2
 	.uleb128 0x1
 	.long	.LASF18
-	.byte	0xc3
+	.byte	0xd0
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1690,16 +1807,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF20
-	.byte	0xaf
+	.byte	0xba
 	.long	0x78
 	.quad	.LFB11
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1f9
+	.long	0x1fb
 	.uleb128 0x1
 	.long	.LASF21
-	.byte	0xb0
+	.byte	0xbc
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1707,7 +1824,7 @@ perimetroPoligonoRegular:
 	.sleb128 -40
 	.uleb128 0x1
 	.long	.LASF22
-	.byte	0xb0
+	.byte	0xbc
 	.byte	0x16
 	.long	0x78
 	.uleb128 0x2
@@ -1715,7 +1832,7 @@ perimetroPoligonoRegular:
 	.sleb128 -36
 	.uleb128 0x1
 	.long	.LASF23
-	.byte	0xb0
+	.byte	0xbc
 	.byte	0x21
 	.long	0x78
 	.uleb128 0x2
@@ -1723,7 +1840,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF24
-	.byte	0xb0
+	.byte	0xbc
 	.byte	0x28
 	.long	0x78
 	.uleb128 0x2
@@ -1732,16 +1849,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF25
-	.byte	0xa0
+	.byte	0xaa
 	.long	0x78
 	.quad	.LFB10
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x244
+	.long	0x246
 	.uleb128 0x1
 	.long	.LASF21
-	.byte	0xa1
+	.byte	0xac
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1749,7 +1866,7 @@ perimetroPoligonoRegular:
 	.sleb128 -36
 	.uleb128 0x1
 	.long	.LASF22
-	.byte	0xa1
+	.byte	0xac
 	.byte	0x16
 	.long	0x78
 	.uleb128 0x2
@@ -1757,7 +1874,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF26
-	.byte	0xa1
+	.byte	0xac
 	.byte	0x21
 	.long	0x78
 	.uleb128 0x2
@@ -1766,16 +1883,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF27
-	.byte	0x93
+	.byte	0x9c
 	.long	0x78
 	.quad	.LFB9
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x273
+	.long	0x275
 	.uleb128 0x1
 	.long	.LASF13
-	.byte	0x94
+	.byte	0x9e
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1784,16 +1901,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF28
-	.byte	0x86
+	.byte	0x8e
 	.long	0x78
 	.quad	.LFB8
 	.quad	.LFE8-.LFB8
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x2b0
+	.long	0x2b2
 	.uleb128 0x1
 	.long	.LASF29
-	.byte	0x87
+	.byte	0x90
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1801,7 +1918,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF30
-	.byte	0x87
+	.byte	0x90
 	.byte	0x1a
 	.long	0x78
 	.uleb128 0x2
@@ -1810,16 +1927,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF31
-	.byte	0x77
+	.byte	0x7e
 	.long	0x78
 	.quad	.LFB7
 	.quad	.LFE7-.LFB7
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x2ed
+	.long	0x2ef
 	.uleb128 0x1
 	.long	.LASF32
-	.byte	0x78
+	.byte	0x80
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1827,7 +1944,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF26
-	.byte	0x78
+	.byte	0x80
 	.byte	0x11
 	.long	0x78
 	.uleb128 0x2
@@ -1836,16 +1953,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF33
-	.byte	0x6a
+	.byte	0x70
 	.long	0x78
 	.quad	.LFB6
 	.quad	.LFE6-.LFB6
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x32a
+	.long	0x32c
 	.uleb128 0x1
 	.long	.LASF32
-	.byte	0x6b
+	.byte	0x72
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1853,7 +1970,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF26
-	.byte	0x6b
+	.byte	0x72
 	.byte	0x11
 	.long	0x78
 	.uleb128 0x2
@@ -1862,16 +1979,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF34
-	.byte	0x5d
+	.byte	0x62
 	.long	0x78
 	.quad	.LFB5
 	.quad	.LFE5-.LFB5
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x359
+	.long	0x35b
 	.uleb128 0x1
 	.long	.LASF13
-	.byte	0x5e
+	.byte	0x64
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1880,16 +1997,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF35
-	.byte	0x52
+	.byte	0x56
 	.long	0x78
 	.quad	.LFB4
 	.quad	.LFE4-.LFB4
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x388
+	.long	0x38a
 	.uleb128 0x1
 	.long	.LASF13
-	.byte	0x53
+	.byte	0x58
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1898,16 +2015,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF36
-	.byte	0x43
+	.byte	0x46
 	.long	0x78
 	.quad	.LFB3
 	.quad	.LFE3-.LFB3
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x3c5
+	.long	0x3c7
 	.uleb128 0x1
 	.long	.LASF32
-	.byte	0x44
+	.byte	0x48
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1915,7 +2032,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF13
-	.byte	0x44
+	.byte	0x48
 	.byte	0x11
 	.long	0x78
 	.uleb128 0x2
@@ -1924,16 +2041,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF37
-	.byte	0x36
+	.byte	0x38
 	.long	0x78
 	.quad	.LFB2
 	.quad	.LFE2-.LFB2
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x402
+	.long	0x404
 	.uleb128 0x1
 	.long	.LASF32
-	.byte	0x37
+	.byte	0x3a
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1941,7 +2058,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF26
-	.byte	0x37
+	.byte	0x3a
 	.byte	0x11
 	.long	0x78
 	.uleb128 0x2
@@ -1950,16 +2067,16 @@ perimetroPoligonoRegular:
 	.byte	0
 	.uleb128 0x2
 	.long	.LASF38
-	.byte	0x22
+	.byte	0x23
 	.long	0x78
 	.quad	.LFB1
 	.quad	.LFE1-.LFB1
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x44d
+	.long	0x44f
 	.uleb128 0x1
 	.long	.LASF23
-	.byte	0x23
+	.byte	0x25
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -1967,7 +2084,7 @@ perimetroPoligonoRegular:
 	.sleb128 -36
 	.uleb128 0x1
 	.long	.LASF24
-	.byte	0x23
+	.byte	0x25
 	.byte	0x12
 	.long	0x78
 	.uleb128 0x2
@@ -1975,14 +2092,14 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF39
-	.byte	0x23
+	.byte	0x25
 	.byte	0x19
 	.long	0x78
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -28
 	.byte	0
-	.uleb128 0xc
+	.uleb128 0xd
 	.long	.LASF41
 	.byte	0x1
 	.byte	0x15
@@ -1994,7 +2111,7 @@ perimetroPoligonoRegular:
 	.byte	0x9c
 	.uleb128 0x1
 	.long	.LASF32
-	.byte	0x16
+	.byte	0x17
 	.byte	0xb
 	.long	0x78
 	.uleb128 0x2
@@ -2002,7 +2119,7 @@ perimetroPoligonoRegular:
 	.sleb128 -32
 	.uleb128 0x1
 	.long	.LASF26
-	.byte	0x16
+	.byte	0x17
 	.byte	0x11
 	.long	0x78
 	.uleb128 0x2
@@ -2177,6 +2294,23 @@ perimetroPoligonoRegular:
 	.byte	0
 	.byte	0
 	.uleb128 0xc
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0xd
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
