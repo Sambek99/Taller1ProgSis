@@ -1,4 +1,4 @@
-#include <studio.h>
+#include <stdio.h>
 #include <figuras2D.c>
 #include <figuras3D.c>
 #include <funciones.h>

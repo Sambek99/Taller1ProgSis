@@ -18,6 +18,14 @@ Polígono regular.*/
 /*TRIANGULO*/
 
 float areaTriangulo(float base, float altura) {
+    printf("Ingrese la base del triángulo: ");
+    scanf("%f", &base);
+    printf("Ingrese la altura del triángulo: ");
+    scanf("%f", &altura);
+    if (base <= 0 || altura <= 0) {
+        printf("Error: La base y la altura deben ser mayores que cero.\n");
+        return -1; // Indica un error
+    }
     return (base * altura) / 2;
 }
 
