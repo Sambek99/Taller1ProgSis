@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <math.h>
-#include "figuras.h"
+#include "funciones.h"
 
 /*  CUBO    */
 

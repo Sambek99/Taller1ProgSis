@@ -5,7 +5,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-/*FIGURAS 2D*/
+// ==================== FIGURAS 2D ====================
 
 /*TRIANGULO*/
 float areaTriangulo();
@@ -37,5 +37,26 @@ float perimetroCirculo();
 
 /*POLIGONO REGULAR*/
 float areaPoligonoRegular();
-float perimetroPoligonoRegular()
-;
+float perimetroPoligonoRegular();
+
+// ==================== FIGURAS 3D ====================
+
+// Cubo
+float superficieCubo();
+float volumenCubo();
+
+// Cuboide
+float superficieCuboide();
+float volumenCuboide();
+
+// Cilindro
+float superficieCilindro();
+float volumenCilindro();
+
+// Esfera
+float superficieEsfera();
+float volumenEsfera();
+
+// Cono circular recto
+float superficieCono();
+float volumenCono();
